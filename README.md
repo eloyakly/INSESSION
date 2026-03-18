@@ -34,8 +34,8 @@ Sigue estos pasos para correr el proyecto en tu entorno local:
 
 1. **Clonar el repositorio:**
     ```Terminal
-    git clone [https://github.com/tu-usuario/insession.git](https://github.com/tu-usuario/insession.git)
-    cd insession
+    git clone [https://github.com/eloyakly/INSESSION.git](https://github.com/eloyakly/INSESSION.git)
+    cd INSESSION
     ```
 
 **Instalar dependencias de PHP:**
