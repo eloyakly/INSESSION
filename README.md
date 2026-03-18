@@ -60,15 +60,14 @@ Sigue estos pasos para correr el proyecto en tu entorno local:
 ``
 **Ejecutar migraciones:**
 
-```
-    php artisan migrate
+``
+php artisan migrate
 
 ``
 
 **Iniciar el servidor de desarrollo:**
 
-
-```
+``
 
     php artisan serve
 
