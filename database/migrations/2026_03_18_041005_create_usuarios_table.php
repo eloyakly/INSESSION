@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
             $table->string('nombre', 50);
-            $table->string('apellido', 50);
             $table->string('correo', 100)->unique();
             $table->string('clave'); // Para el Hash::make() de Laravel
             $table->string('foto')->default('default_user.webp');

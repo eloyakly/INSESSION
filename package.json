@@ -18,5 +18,8 @@
         "test": "tests"
     },
     "author": "",
-    "license": "ISC"
+    "license": "ISC",
+    "dependencies": {
+        "simple-notify": "^1.0.6"
+    }
 }

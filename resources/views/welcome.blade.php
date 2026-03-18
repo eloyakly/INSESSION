@@ -3,16 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Insesion - Mensajería Profesional</title>
-    <link rel="icon" href="{{ asset('logo.png') }}" type="image/png">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <script>
-        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
-    </script>
+
+     <x-logo-y-titulo />
+  
+    
     <style>
         .landing-container {
             display: flex;
@@ -205,6 +199,10 @@
         }
         .landing-nav-link {
             color: rgba(255,255,255,0.9);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            background-color: var(--color-primario);
             text-shadow: 0 1px 2px rgba(0,0,0,0.5);
         }
     </style>
@@ -260,7 +258,7 @@
                             Crear una cuenta
                         </x-boton-primario>
                     </a>
-                    <a href="{{ route('chat.index') }}" class="boton-secundario" style="min-width: 200px; font-size: 1.1rem; padding: 1rem 2rem; color: #ffffff; border-color: rgba(255,255,255,0.5); background-color: rgba(0,0,0,0.3);">
+                    <a href="" class="boton-secundario" style="min-width: 200px; font-size: 1.1rem; padding: 1rem 2rem; color: #ffffff; border-color: rgba(255,255,255,0.5); background-color: rgba(0,0,0,0.3);">
                         Ver demostración
                     </a>
                 </div>

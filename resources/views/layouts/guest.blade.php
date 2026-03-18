@@ -3,10 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Insesion') }}</title>
-    <link rel="icon" href="{{ asset('logo.png') }}" type="image/png">
+   
+     <x-logo-y-titulo />
     <!-- Estilos de la aplicación -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     

@@ -2,30 +2,29 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable; // IMPORTANTE: Debe ser este
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
-class Usuario extends Model
+
+class Usuario extends Authenticatable
 {
-    //usar la tabla usuarios
-    protected $table = 'usuarios';
-    protected $fillable = ['nombre', 'apellido', 'correo', 'clave', 'foto', 'frase', 'nivel'];
-    protected $hidden = ['clave'];
-    // Relación: Un usuario puede estar en muchas conversaciones (grupos o privadas)
-    public function conversaciones()
-    {
-        return $this->belongsToMany(Conversacion::class , 'participantes', 'usuario_id', 'conversacion_id')
-            ->withPivot('rol', 'fecha_union');
-    }
+    use HasApiTokens, Notifiable;
 
-    // Relación: Mensajes enviados por el usuario
-    public function mensajes()
-    {
-        return $this->hasMany(Mensaje::class , 'usuario_id');
-    }
+    protected $table = 'usuarios'; // Aquí le decimos a Laravel que la tabla es 'usuarios'
 
-    // Relación: Sus contactos/amigos
-    public function contactos()
+    protected $fillable = [
+        'nombre', 'apellido', 'correo', 'clave', 'foto', 'frase', 'nivel'
+    ];
+
+    protected $hidden = [
+        'clave', 'remember_token',
+    ];
+
+    // Indicarle a Laravel que use 'clave' en lugar de 'password' para las verificaciones
+    public function getAuthPassword()
     {
-        return $this->belongsToMany(Usuario::class , 'contactos', 'usuario_id', 'contacto_id');
+        return $this->clave;
     }
 }
+
