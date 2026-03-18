@@ -33,45 +33,31 @@ El proyecto está construido con las mejores tecnologías de desarrollo web mode
 Sigue estos pasos para correr el proyecto en tu entorno local:
 
 1. **Clonar el repositorio:**
-    ```Terminal
-    git clone https://github.com/eloyakly/INSESSION.git
-    cd INSESSION
+    ```
+        git clone https://github.com/eloyakly/INSESSION.git
+        cd INSESSION
     ```
 
 **Instalar dependencias de PHP:**
-`Terminal
-    composer install
-    `
+`composer install`
 
 **Instalar dependencias de JavaScript:**
-`Terminal
-    npm install
-    `
+`npm install`
 
 **Configurar variables de entorno:**
 **Cambiar el nombre del archivo .env.example a .env y editarlo con tus credenciales de base de datos y API keys**
 
-```
-    cp .env.example .env
-```
+`cp .env.example .env`
 
 **Editar .env con tus credenciales de base de datos y API keys**
 
-``
 **Ejecutar migraciones:**
 
-``
-php artisan migrate
-
-``
+`php artisan migrate`
 
 **Iniciar el servidor de desarrollo:**
 
-``
-
-    php artisan serve
-
-``
+`php artisan serve`
 
 **Iniciar el servidor de Vite:**
 
