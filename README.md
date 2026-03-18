@@ -49,31 +49,31 @@ Sigue estos pasos para correr el proyecto en tu entorno local:
     `
 
 **Configurar variables de entorno:**
-Terminal
-Cambiar el nombre del archivo .env.example a .env y editarlo con tus credenciales de base de datos y API keys
-`cp .env.example .env
+**Cambiar el nombre del archivo .env.example a .env y editarlo con tus credenciales de base de datos y API keys**
 
-# Editar .env con tus credenciales de base de datos y API keys
+```
+    cp .env.example .env
+```
 
-`
-**Ejecutar migraciones y seeders:**
-Terminal
+**Editar .env con tus credenciales de base de datos y API keys**
 
-````
-    php artisan migrate --seed
-    ```
+``
+**Ejecutar migraciones:**
+
+```
+    php artisan migrate
+
+``
 
 **Iniciar el servidor de desarrollo:**
-Terminal
-````
+
+
+```
 
     php artisan serve
-    ```
+
+``
 
 **Iniciar el servidor de Vite:**
-Terminal
 
-````
-    npm run dev
-    ```
-````
+`npm run dev`
