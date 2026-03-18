@@ -34,7 +34,7 @@ Sigue estos pasos para correr el proyecto en tu entorno local:
 
 1. **Clonar el repositorio:**
     ```Terminal
-    git clone [https://github.com/eloyakly/INSESSION.git](https://github.com/eloyakly/INSESSION.git)
+    git clone https://github.com/eloyakly/INSESSION.git
     cd INSESSION
     ```
 
