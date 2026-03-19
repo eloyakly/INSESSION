@@ -63,6 +63,8 @@ Sigue estos pasos para correr el proyecto en tu entorno local:
 
 `npm run dev`
 
+## ✨ Modelo Entidad-Relación
+
 ```mermaid
 erDiagram
 %% --- ENTIDADES ---
