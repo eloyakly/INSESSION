@@ -47,7 +47,7 @@
         }
 
         .landing-nav-link:hover {
-            color: var(--color-primario);
+            background-color: var(--color-primario-hover);
         }
 
         .hero-section {

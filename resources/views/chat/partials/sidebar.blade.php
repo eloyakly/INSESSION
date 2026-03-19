@@ -5,15 +5,25 @@
             <x-theme-toggle />
             <!-- Dropdown de opciones de usuario -->
             <div class="dropdown-menu-usuario" style="position: relative;">
-                <button id="btn-menu-usuario" style="background: none; border: none; font-size: 1.25rem; color: var(--color-texto-secundario); cursor: pointer; padding: 0.25rem 0.5rem; border-radius: 6px; transition: background 0.2s;" title="Opciones">
-                    ⋮
+                <button id="btn-menu-usuario" style="background: none; border: none; cursor: pointer; padding: 0; border-radius: 50%; transition: opacity 0.2s;" title="Opciones de usuario">
+                    @auth
+                    <div class="tarjeta-avatar" style="width: 34px; height: 34px; margin: 0;">
+                        @if(Auth::user()->foto)
+                            <img src="{{ Auth::user()->foto }}" alt="Foto de perfil" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+                        @else
+                            <div class="avatar-placeholder" style="font-size: 0.9rem; width: 100%; height: 100%;">
+                                {{ strtoupper(substr(Auth::user()->nombre ?? Auth::user()->name ?? 'U', 0, 1)) }}
+                            </div>
+                        @endif
+                    </div>
+                    @endauth
                 </button>
                 <div id="dropdown-usuario" class="dropdown-panel" style="
                     display: none;
                     position: absolute;
                     top: calc(100% + 0.5rem);
                     right: 0;
-                    min-width: 200px;
+                    min-width: 210px;
                     background-color: var(--color-fondo-panel);
                     border: 1px solid var(--color-borde);
                     border-radius: var(--border-radius);
@@ -24,9 +34,9 @@
                 ">
                     {{-- Info del usuario --}}
                     @auth
-                    <div style="padding: 0.85rem 1rem; border-bottom: 1px solid var(--color-borde);">
+                    <div style="padding: 0.75rem 1rem; border-bottom: 1px solid var(--color-borde);">
                         <p style="font-weight: 600; font-size: 0.9rem; color: var(--color-texto); margin: 0;">{{ Auth::user()->nombre ?? Auth::user()->name ?? 'Usuario' }}</p>
-                        <p style="font-size: 0.75rem; color: var(--color-texto-secundario); margin: 0.15rem 0 0;">{{ Auth::user()->email ?? '' }}</p>
+                        <p style="font-size: 0.75rem; color: var(--color-texto-secundario); margin: 0.15rem 0 0;">{{ Auth::user()->correo ?? Auth::user()->email ?? '' }}</p>
                     </div>
                     @endauth
 
@@ -101,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         document.addEventListener('click', function (e) {
-            if (!dropdown.contains(e.target) && e.target !== btn) {
+            if (!dropdown.contains(e.target) && !btn.contains(e.target)) {
                 dropdown.style.display = 'none';
             }
         });

@@ -11,3 +11,9 @@
         <p>Selecciona un chat en la lista de la izquierda para comenzar una conversación.</p>
     </div>
 @endsection
+
+<script>
+    /*
+    const usuario = @json($usuario);
+    console.log(usuario);*/
+</script>

@@ -24,7 +24,7 @@ addEventListener('DOMContentLoaded', () => {
             });
 
             const result = await response.json();
-
+            console.log(result);
             if (response.ok) {
                 // Éxito (Status 200-299)
                 new Notify({

@@ -7,8 +7,9 @@ use Illuminate\Support\Facades\Auth;
 
 class ChatController extends Controller
 {
-    public function index() {
-        return view('chat.index');
+    public function index(Request $request) {
+        $usuario = Auth::user();
+        return view('chat.index', compact('usuario'));
     }
 
     public function logout(Request $request) {

@@ -21,6 +21,23 @@
     </script>
 </head>
 <body>
+    <div style="position: absolute; top: 1rem; left: 1rem;">
+        <a href="/" style="
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            color: var(--color-texto-secundario);
+            text-decoration: none;
+            font-size: 0.875rem;
+            padding: 0.4rem 0.75rem;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        " onmouseover="this.style.background='var(--color-fondo)'; this.style.color='var(--color-primario)'" onmouseout="this.style.background='transparent'; this.style.color='var(--color-texto-secundario)'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5"></path>
+                <path d="M12 19l-7-7 7-7"></path>
+            </svg>
+            Volver al inicio
+        </a>
+    </div>
     <div style="position: absolute; top: 1rem; right: 1rem;">
         <x-theme-toggle />
     </div>
