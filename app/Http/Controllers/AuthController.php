@@ -122,4 +122,17 @@ class AuthController extends Controller
             'foto'   => $usuario->foto
         ]);
     }
+
+    public function logout(Request $request) {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/login')
+            ->withHeaders([
+                'Cache-Control' => 'no-store, no-cache, must-revalidate, max-age=0',
+                'Pragma'        => 'no-cache',
+                'Expires'       => 'Thu, 01 Jan 1970 00:00:00 GMT',
+            ]);
+    }
 }

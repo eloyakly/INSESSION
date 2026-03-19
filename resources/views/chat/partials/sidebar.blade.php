@@ -3,10 +3,60 @@
         <h2 style="font-size: 1.25rem; font-weight: 600; color: var(--color-texto);">Mensajes</h2>
         <div style="display: flex; gap: 0.5rem; align-items: center;">
             <x-theme-toggle />
-            <!-- Aquí podría ir un dropdown de opciones de usuario -->
-            <button style="background: none; border: none; font-size: 1.25rem; color: var(--color-texto-secundario); cursor: pointer;">
-                ⋮
-            </button>
+            <!-- Dropdown de opciones de usuario -->
+            <div class="dropdown-menu-usuario" style="position: relative;">
+                <button id="btn-menu-usuario" style="background: none; border: none; font-size: 1.25rem; color: var(--color-texto-secundario); cursor: pointer; padding: 0.25rem 0.5rem; border-radius: 6px; transition: background 0.2s;" title="Opciones">
+                    ⋮
+                </button>
+                <div id="dropdown-usuario" class="dropdown-panel" style="
+                    display: none;
+                    position: absolute;
+                    top: calc(100% + 0.5rem);
+                    right: 0;
+                    min-width: 200px;
+                    background-color: var(--color-fondo-panel);
+                    border: 1px solid var(--color-borde);
+                    border-radius: var(--border-radius);
+                    box-shadow: var(--shadow);
+                    z-index: 1000;
+                    overflow: hidden;
+                    animation: dropdown-aparecer 0.18s ease-out;
+                ">
+                    {{-- Info del usuario --}}
+                    @auth
+                    <div style="padding: 0.85rem 1rem; border-bottom: 1px solid var(--color-borde);">
+                        <p style="font-weight: 600; font-size: 0.9rem; color: var(--color-texto); margin: 0;">{{ Auth::user()->nombre ?? Auth::user()->name ?? 'Usuario' }}</p>
+                        <p style="font-size: 0.75rem; color: var(--color-texto-secundario); margin: 0.15rem 0 0;">{{ Auth::user()->email ?? '' }}</p>
+                    </div>
+                    @endauth
+
+                    {{-- Opciones --}}
+                    <div style="padding: 0.35rem 0;">
+                        <a href="/perfil" class="dropdown-item" style="
+                            display: flex; align-items: center; gap: 0.65rem;
+                            padding: 0.6rem 1rem;
+                            color: var(--color-texto);
+                            text-decoration: none;
+                            font-size: 0.875rem;
+                            transition: background 0.15s;
+                        ">
+                            <span style="font-size: 1.1rem;">👤</span>
+                            Mi Perfil
+                        </a>
+                        <a href="#" onclick="cerrarSesion(event)" class="dropdown-item dropdown-item-peligro" style="
+                            display: flex; align-items: center; gap: 0.65rem;
+                            padding: 0.6rem 1rem;
+                            color: #DC3545;
+                            text-decoration: none;
+                            font-size: 0.875rem;
+                            transition: background 0.15s;
+                        ">
+                            <span style="font-size: 1.1rem;">🚪</span>
+                            Cerrar Sesión
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     
@@ -37,3 +87,44 @@
         hora="Marte" 
         :en-linea="true" />
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const btn = document.getElementById('btn-menu-usuario');
+    const dropdown = document.getElementById('dropdown-usuario');
+
+    if (btn && dropdown) {
+        btn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            const abierto = dropdown.style.display === 'block';
+            dropdown.style.display = abierto ? 'none' : 'block';
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!dropdown.contains(e.target) && e.target !== btn) {
+                dropdown.style.display = 'none';
+            }
+        });
+    }
+});
+
+function cerrarSesion(e) {
+    e.preventDefault();
+
+    // Limpiar almacenamiento del navegador
+    localStorage.clear();
+    sessionStorage.clear();
+
+    // Limpiar Cache API (si está disponible)
+    if ('caches' in window) {
+        caches.keys().then(function (names) {
+            names.forEach(function (name) {
+                caches.delete(name);
+            });
+        });
+    }
+
+    // Redirigir al logout del servidor
+    window.location.href = '/logout';
+}
+</script>

@@ -35,13 +35,13 @@ addEventListener('DOMContentLoaded', () => {
                     speed: 300,
                     showIcon: true,
                     autoclose: true,
-                    autotimeout: 3000,
+                    autotimeout: 1000,
                     gap: 20,
                     distance: 20,
                     type: 1,
                     position: 'right top'
                 });
-                setTimeout(() => window.location.href = '/chat', 3000);
+                setTimeout(() => window.location.href = '/chat', 1000);
             } else if (response.status === 422) {
                 // Errores de validación de Laravel
                 
